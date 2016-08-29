@@ -80,7 +80,7 @@ class User implements UserInterface
      */
     public function setPassword($password)
     {
-        $this->password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+        $this->password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 16]);
     }
 
     /**
@@ -198,7 +198,7 @@ class User implements UserInterface
     public function getRoles()
     {
         if ($this->isAdmin) {
-            return ['USER_ADMIN'];
+            return ['ROLE_ADMIN'];
         }
 
         return ['ROLE_USER'];
