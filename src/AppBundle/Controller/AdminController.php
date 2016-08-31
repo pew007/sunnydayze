@@ -16,9 +16,8 @@ class AdminController extends Controller
      */
     public function indexAction()
     {
-        $date = date('Y-m-d H:i:s');
         $user = $this->getCurrentUser();
-        $user->setLastLogin(new \DateTime($date));
+        $user->updateLastLogin();
 
         $em = $this->getEntityManager();
         $em->persist($user);

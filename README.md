@@ -1,4 +1,11 @@
-.checkout
-=========
+# Database #
 
-A Symfony project created on August 26, 2016, 11:09 pm.
+```
+php app/console doctrine:database:create
+```
+
+### Development ###
+```
+php app/console doctrine:schema:update --force
+php app/console doctrine:fixtures:load
+```

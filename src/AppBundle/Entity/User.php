@@ -7,8 +7,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Class User
- * @ORM\Table(name="users")
  * @ORM\Entity()
+ * @ORM\Table(name="users")
  */
 class User implements UserInterface
 {
@@ -50,13 +50,14 @@ class User implements UserInterface
     private $createdAt;
 
     /**
-     * @ORM\Column(name="last_login", type="datetime")
+     * @ORM\Column(name="last_login", type="datetime", nullable=true)
      */
     private $lastLogin;
 
     public function __construct()
     {
-        $this->createdAt = time();
+        $date = date('Y-m-d H:i:s');
+        $this->createdAt = new \DateTime($date);
     }
 
     /**
@@ -80,7 +81,7 @@ class User implements UserInterface
      */
     public function setPassword($password)
     {
-        $this->password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 16]);
+        $this->password = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
     }
 
     /**
@@ -177,6 +178,12 @@ class User implements UserInterface
     public function setLastLogin($lastLogin)
     {
         $this->lastLogin = $lastLogin;
+    }
+
+    public function updateLastLogin()
+    {
+        $date = date('Y-m-d H:i:s');
+        $this->lastLogin = new \DateTime($date);
     }
 
     /**
