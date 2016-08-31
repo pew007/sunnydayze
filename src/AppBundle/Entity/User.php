@@ -20,14 +20,14 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(name="password", type="string", length=255)
-     */
-    private $password;
-
-    /**
      * @ORM\Column(name="email", type="string", length=255, unique=true)
      */
     private $email;
+
+    /**
+     * @ORM\Column(name="password", type="string", length=255)
+     */
+    private $password;
 
     /**
      * @ORM\Column(name="first_name", type="string", length=255)
