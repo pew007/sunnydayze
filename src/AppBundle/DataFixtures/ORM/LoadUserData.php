@@ -8,7 +8,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class LoadUserData implements FixtureInterface
 {
-
     /**
      * Load data fixtures with the passed EntityManager
      *

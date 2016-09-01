@@ -172,14 +172,6 @@ class User implements UserInterface
         return $this->lastLogin;
     }
 
-    /**
-     * @param \DateTime $lastLogin
-     */
-    public function setLastLogin($lastLogin)
-    {
-        $this->lastLogin = $lastLogin;
-    }
-
     public function updateLastLogin()
     {
         $date = date('Y-m-d H:i:s');
@@ -200,7 +192,7 @@ class User implements UserInterface
      * and populated in any number of different ways when the user object
      * is created.
      *
-     * @return (Role|string)[] The user roles
+     * @return string[] The user roles
      */
     public function getRoles()
     {
