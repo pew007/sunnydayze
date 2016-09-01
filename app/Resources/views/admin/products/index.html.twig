@@ -1,5 +1,48 @@
 {% extends ':admin:base.html.twig' %}
 
 {% block body %}
-hello
+    <div class="container">
+        <div class="row">
+            <a class="btn btn-primary" href="{{ path('new_admin_product') }}" role="button">Add Product</a>
+        </div>
+
+        <br/>
+
+        <div class="row">
+            <table id="productsTable" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>SKU</th>
+                    <th>Vendor</th>
+                    <th>Name</th>
+                    <th>Cost</th>
+                    <th>Price</th>
+                    <th>Availability</th>
+                    <th>Created</th>
+                    <th>Updated</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.sku }}</td>
+                        <td>{{ product.vendor.name }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>${{ product.cost }}</td>
+                        <td>${{ product.price }}</td>
+                        <td>{{ product.amountAvailable }}</td>
+                        <td>{{ product.created | date("m/d/Y  g:ia") }}</td>
+                        <td>{{ product.updated | date("m/d/Y  g:ia") }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascriptsPageSpecific %}
+    <script type="text/javascript" src="{{ asset('js/admin-products.js') }}"></script>
 {% endblock %}

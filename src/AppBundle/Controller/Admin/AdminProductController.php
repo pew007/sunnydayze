@@ -12,6 +12,19 @@ class AdminProductController extends Controller
      */
     public function indexAction()
     {
-        return $this->render(':admin/products:index.html.twig');
+        $em = $this->getDoctrine()
+                   ->getManager();
+        $repo = $em->getRepository('AppBundle:Product');
+        $products = $repo->findAll();
+
+        return $this->render(':admin/products:index.html.twig', ['products' => $products]);
+    }
+
+    /**
+     * @Route("/admin/products/new", name="new_admin_product")
+     */
+    public function addAction()
+    {
+        return $this->render(':admin/products:new.html.twig');
     }
 }
