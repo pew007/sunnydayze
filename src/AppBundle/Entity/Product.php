@@ -27,9 +27,9 @@ class Product
 
     /**
      * @var string
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="sku", type="string")
      */
-    private $description;
+    private $sku;
 
     /**
      * @var float
@@ -51,9 +51,9 @@ class Product
 
     /**
      * @var string
-     * @ORM\Column(name="sku", type="string")
+     * @ORM\Column(name="description", type="text")
      */
-    private $sku;
+    private $description;
 
     /**
      * Get id
