@@ -184,10 +184,6 @@ class FormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function start(Request $request, AuthenticationException $authException = null)
     {
-        $redirectUrl = $request->get('dest');
-
-        $this->session->set('redirectUrl', $redirectUrl);
-
         return new RedirectResponse('/login');
     }
 }
