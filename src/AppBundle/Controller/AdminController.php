@@ -16,29 +16,6 @@ class AdminController extends Controller
      */
     public function indexAction()
     {
-        $user = $this->getCurrentUser();
-        $user->updateLastLogin();
-
-        $em = $this->getEntityManager();
-        $em->persist($user);
-        $em->flush();
-
         return $this->render(':admin:index.html.twig');
-    }
-
-    private function getEntityManager()
-    {
-        return $this->getDoctrine()
-                    ->getManager();
-    }
-
-    /**
-     * @return User
-     */
-    private function getCurrentUser()
-    {
-        return $this->get('security.token_storage')
-                    ->getToken()
-                    ->getUser();
     }
 }

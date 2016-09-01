@@ -140,7 +140,7 @@ class FormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        $url = $this->urlGenerator->generate('admin_dashboard');
+        $url = $this->urlGenerator->generate('authenticated');
 
         $response = new JsonResponse();
         $response->setData(
