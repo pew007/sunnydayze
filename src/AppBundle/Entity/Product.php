@@ -57,6 +57,12 @@ class Product
     private $description;
 
     /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Vendor", inversedBy="products")
+     * @ORM\JoinColumn(name="vendor_id", referencedColumnName="id")
+     */
+    private $vendor;
+
+    /**
      * @ORM\Column(name="created", type="datetime")
      * @Gedmo\Timestampable(on="create")
      */
@@ -252,5 +258,21 @@ class Product
     public function setUpdated($updated)
     {
         $this->updated = $updated;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVendor()
+    {
+        return $this->vendor;
+    }
+
+    /**
+     * @param mixed $vendor
+     */
+    public function setVendor($vendor)
+    {
+        $this->vendor = $vendor;
     }
 }

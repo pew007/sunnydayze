@@ -2,14 +2,15 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Class Category
+ * Class Vendor
  * @ORM\Entity()
- * @ORM\Table(name="categories")
+ * @ORM\Table(name="vendors")
  */
-class Category
+class Vendor
 {
     /**
      * @var int
@@ -21,9 +22,20 @@ class Category
 
     /**
      * @var string
-     * @ORM\Column(name="name", type="string")
+     * @ORM\Column(name="name", type="string", unique=true)
      */
     private $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Product", mappedBy="vendor")
+     */
+    private $products;
+
+    public function __construct($name)
+    {
+        $this->name = $name;
+        $this->products = new ArrayCollection();
+    }
 
     /**
      * @return int
