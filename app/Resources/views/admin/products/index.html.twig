@@ -30,8 +30,8 @@
                         <td>{{ product.sku }}</td>
                         <td>{{ product.vendor.name }}</td>
                         <td>{{ product.name }}</td>
-                        <td>${{ product.cost }}</td>
-                        <td>${{ product.price }}</td>
+                        <td>{{ product.cost | money }}</td>
+                        <td>{{ product.price | money }}</td>
                         <td>{{ product.amountAvailable }}</td>
                         <td>{{ product.created | date("m/d/Y  g:ia") }}</td>
                         <td>{{ product.updated | date("m/d/Y  g:ia") }}</td>
