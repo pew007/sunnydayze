@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -45,20 +46,15 @@ class User implements UserInterface
     private $isAdmin;
 
     /**
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(name="created", type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
-    private $createdAt;
+    private $created;
 
     /**
      * @ORM\Column(name="last_login", type="datetime", nullable=true)
      */
     private $lastLogin;
-
-    public function __construct()
-    {
-        $date = date('Y-m-d H:i:s');
-        $this->createdAt = new \DateTime($date);
-    }
 
     /**
      * @return int
@@ -151,17 +147,17 @@ class User implements UserInterface
     /**
      * @return \DateTime
      */
-    public function getCreatedAt()
+    public function getCreated()
     {
-        return $this->createdAt;
+        return $this->created;
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param \DateTime $created
      */
-    public function setCreatedAt($createdAt)
+    public function setCreated($created)
     {
-        $this->createdAt = $createdAt;
+        $this->created = $created;
     }
 
     /**
