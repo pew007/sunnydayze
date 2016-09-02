@@ -17,8 +17,8 @@
                     <th>Cost</th>
                     <th>Price</th>
                     <th>Availability</th>
-                    <th>Created</th>
                     <th>Updated</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,8 +31,14 @@
                         <td>{{ product.cost | money }}</td>
                         <td>{{ product.price | money }}</td>
                         <td>{{ product.amountAvailable }}</td>
-                        <td>{{ product.created | date("m/d/Y  g:ia") }}</td>
                         <td>{{ product.updated | date("m/d/Y  g:ia") }}</td>
+                        <td>
+                            <a href="{{ path('edit_admin_product', {'productId': product.id}) }}">edit</a>
+                            &nbsp;&nbsp;
+                            <a href="{{ path('show_admin_product', {'productId': product.id}) }}">view</a>
+                            &nbsp;&nbsp;
+                            <a href="{{ path('delete_admin_product', {'productId': product.id}) }}">delete</a>
+                        </td>
                     </tr>
                 {% endfor %}
                 </tbody>

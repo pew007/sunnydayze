@@ -22,4 +22,10 @@ class EntityManager
         $this->em->persist($entity);
         $this->em->flush();
     }
+
+    public function remove($entity)
+    {
+        $this->em->remove($entity);
+        $this->em->flush();
+    }
 }
