@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Doctrine;
+namespace AppBundle\Service;
 
 class EntityManager
 {

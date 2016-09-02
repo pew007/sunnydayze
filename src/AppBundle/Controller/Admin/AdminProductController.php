@@ -21,7 +21,7 @@ class AdminProductController extends Controller
      */
     public function indexAction()
     {
-        $repo     = $this->get('doctrine.entity_manager')
+        $repo     = $this->get('service.entity_manager')
                          ->getRepository('AppBundle:Product');
         $products = $repo->findAll();
 
@@ -44,7 +44,7 @@ class AdminProductController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $product = $form->getData();
 
-            $this->get('doctrine.entity_manager')
+            $this->get('service.entity_manager')
                  ->save($product);
 
             return $this->redirectToRoute('admin_products');
@@ -100,7 +100,7 @@ class AdminProductController extends Controller
     public function deleteAction($productId)
     {
         $product = $this->getProductById($productId);
-        $this->get('doctrine.entity_manager')
+        $this->get('service.entity_manager')
              ->remove($product);
 
         return $this->redirectToRoute('admin_products');
@@ -108,7 +108,7 @@ class AdminProductController extends Controller
 
     private function getProductById($productId)
     {
-        $repo = $this->get('doctrine.entity_manager')
+        $repo = $this->get('service.entity_manager')
                      ->getRepository('AppBundle:Product');
 
         $product = $repo->findOneBy(['id' => $productId]);
