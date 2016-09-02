@@ -10,3 +10,7 @@ services:
     class: AppBundle\Twig\AppExtension
     tags:
       - { name: twig.extension }
+
+  doctrine.entity_manager:
+    class: AppBundle\Doctrine\EntityManager
+    arguments: ['@doctrine.orm.entity_manager']
