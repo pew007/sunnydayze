@@ -16,12 +16,15 @@ class LoadVendorData extends AbstractFixture implements OrderedFixtureInterface
      */
     public function load(ObjectManager $manager)
     {
-        $vendor = new Vendor('Oakley');
+        $vendors = ['Oakley', 'Chanel', 'Ray-Ban', 'Prada', 'Gucci'];
+        foreach ($vendors as $vendorName) {
+            $vendor = new Vendor($vendorName);
 
-        $manager->persist($vendor);
-        $manager->flush();
+            $manager->persist($vendor);
+            $manager->flush();
 
-        $this->addReference("vendor-{$vendor->getId()}", $vendor);
+            $this->addReference("vendor-{$vendor->getId()}", $vendor);
+        }
     }
 
     /**

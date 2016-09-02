@@ -2,6 +2,8 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Entity\Vendor;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -15,7 +17,14 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $vendorOptions = [
-            'class' => VendorType::class
+            'class'         => Vendor::class,
+            'multiple'      => false,
+            'expanded'      => false,
+            'property'      => 'name',
+            'query_builder' => function (EntityRepository $repository) {
+                return $repository->createQueryBuilder('u')
+                                  ->orderBy('u.name', 'ASC');
+            },
         ];
 
         $builder->add('name', TextType::class)
@@ -23,8 +32,8 @@ class ProductType extends AbstractType
                 ->add('cost', NumberType::class)
                 ->add('price', NumberType::class)
                 ->add('amountAvailable', NumberType::class)
-                ->add('description', TextareaType::class);
-                //->add('vendor', EntityType::class, $vendorOptions);
+                ->add('description', TextareaType::class)
+                ->add('vendor', EntityType::class, $vendorOptions);
     }
 
     public function configureOptions(OptionsResolver $resolver)
