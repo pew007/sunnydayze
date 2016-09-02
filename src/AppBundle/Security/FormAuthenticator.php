@@ -184,6 +184,9 @@ class FormAuthenticator extends AbstractFormLoginAuthenticator
 
     public function start(Request $request, AuthenticationException $authException = null)
     {
+        $requestUri = $request->getRequestUri();
+        $this->session->set('requestUri', $requestUri);
+
         return new RedirectResponse('/login');
     }
 }

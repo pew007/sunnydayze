@@ -32,9 +32,15 @@ class SecurityController extends Controller
         $user = $this->getCurrentUser();
         $user->updateLastLogin();
 
-        $em = $this->getEntityManager();
-        $em->persist($user);
-        $em->flush();
+        $this->get('doctrine.entity_manager')
+             ->save($user);
+
+        $requestUri = $this->get('session')
+                           ->get('requestUri');
+
+        if ($requestUri) {
+            return $this->redirect($requestUri);
+        }
 
         return $this->redirectToRoute('admin_dashboard');
     }
@@ -50,12 +56,6 @@ class SecurityController extends Controller
              ->invalidate();
 
         $this->redirectToRoute('login');
-    }
-
-    private function getEntityManager()
-    {
-        return $this->getDoctrine()
-                    ->getManager();
     }
 
     /**

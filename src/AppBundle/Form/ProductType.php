@@ -22,8 +22,8 @@ class ProductType extends AbstractType
             'expanded'      => false,
             'property'      => 'name',
             'query_builder' => function (EntityRepository $repository) {
-                return $repository->createQueryBuilder('u')
-                                  ->orderBy('u.name', 'ASC');
+                return $repository->createQueryBuilder('v')
+                                  ->orderBy('v.name', 'ASC');
             },
         ];
 
