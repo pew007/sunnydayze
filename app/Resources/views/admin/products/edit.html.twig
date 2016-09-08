@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            {{ dump(product) }}
+            {% include ':admin/products:_form.html.twig' with {'action': 'Update'} %}
         </div>
     </div>
 {% endblock %}

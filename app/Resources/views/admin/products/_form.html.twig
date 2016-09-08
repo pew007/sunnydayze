@@ -1,0 +1,59 @@
+{{ form_start(form) }}
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Vendor</label>
+    <div class="col-sm-4">
+        {{ form_widget(form.vendor, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Name</label>
+    <div class="col-sm-4">
+        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">SKU</label>
+    <div class="col-sm-4">
+        {{ form_widget(form.sku, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Cost</label>
+    <div class="col-sm-4">
+        <div class="input-group">
+            <div class="input-group-addon">$</div>
+            {{ form_widget(form.cost, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Price</label>
+    <div class="col-sm-4">
+        <div class="input-group">
+            <div class="input-group-addon">$</div>
+            {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+        </div>
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Availability</label>
+    <div class="col-sm-4">
+        {{ form_widget(form.amountAvailable, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+
+<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Description</label>
+    <div class="col-sm-4">
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</div>
+
+<a class="btn btn-info" href="{{ path('admin_products') }}" role="button">Back to list</a>
+<input type="submit" value="{{ action }}" class="btn btn-primary"/>
+{{ form_end(form) }}

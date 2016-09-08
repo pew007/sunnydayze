@@ -59,6 +59,38 @@ class AdminProductController extends Controller
     }
 
     /**
+     * @Route("/product/{productId}/update", name="edit_admin_product")
+     * @param Request $request
+     * @param         $productId
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function updateAction(Request $request, $productId)
+    {
+        $product = $this->getProductById($productId);
+
+        $form = $this->createForm(ProductType::class, $product);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $product = $form->getData();
+
+            $this->get('service.entity_manager')
+                 ->save($product);
+
+            return $this->redirectToRoute('show_admin_product', ['productId' => $productId]);
+        }
+
+        return $this->render(
+            ':admin/products:edit.html.twig',
+            [
+                'form'    => $form->createView(),
+                'product' => $product
+            ]
+        );
+    }
+
+    /**
      * @Route("/product/{productId}", name="show_admin_product")
      * @param $productId
      * @return \Symfony\Component\HttpFoundation\Response
@@ -69,23 +101,6 @@ class AdminProductController extends Controller
 
         return $this->render(
             ':admin/products:show.html.twig',
-            [
-                'product' => $product
-            ]
-        );
-    }
-
-    /**
-     * @Route("/product/{productId}/update", name="edit_admin_product")
-     * @param $productId
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function updateAction($productId)
-    {
-        $product = $this->getProductById($productId);
-
-        return $this->render(
-            ':admin/products:edit.html.twig',
             [
                 'product' => $product
             ]

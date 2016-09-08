@@ -20,7 +20,7 @@ class ProductType extends AbstractType
             'class'         => Vendor::class,
             'multiple'      => false,
             'expanded'      => false,
-            'property'      => 'name',
+            'choice_label'  => 'name',
             'query_builder' => function (EntityRepository $repository) {
                 return $repository->createQueryBuilder('v')
                                   ->orderBy('v.name', 'ASC');

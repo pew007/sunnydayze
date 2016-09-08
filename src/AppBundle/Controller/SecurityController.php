@@ -32,7 +32,7 @@ class SecurityController extends Controller
         $user = $this->getCurrentUser();
         $user->updateLastLogin();
 
-        $this->get('doctrine.entity_manager')
+        $this->get('service.entity_manager')
              ->save($user);
 
         $requestUri = $this->get('session')

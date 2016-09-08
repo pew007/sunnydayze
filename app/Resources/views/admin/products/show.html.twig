@@ -3,7 +3,63 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            {{ dump(product) }}
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Vendor</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" value="{{ product.vendor.name }}" disabled>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" value="{{ product.name }}" disabled>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">SKU</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" value="{{ product.sku }}" disabled>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Cost</label>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input type="text" class="form-control" value="{{ product.cost }}" disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Price</label>
+                <div class="col-sm-4">
+                    <div class="input-group">
+                        <div class="input-group-addon">$</div>
+                        <input type="text" class="form-control" value="{{ product.price }}" disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Availability</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" value="{{ product.amountAvailable }}" disabled>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-4">
+                    <textarea rows="5" class="form-control" disabled>{{ product.description }}</textarea>
+                </div>
+            </div>
+
+            <a class="btn btn-info" href="{{ path('admin_products') }}" role="button">Back to list</a>
+            <a class="btn btn-primary" href="{{ path('edit_admin_product', {'productId': product.id}) }}" role="button">Edit</a>
         </div>
     </div>
 {% endblock %}
