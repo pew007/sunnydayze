@@ -1,0 +1,11 @@
+parameters:
+  database_host: 127.0.0.1
+  database_port: 3306
+  database_name: sunnydayze
+  database_user: root
+  database_password: root
+  mailer_transport: smtp
+  mailer_host: 127.0.0.1
+  mailer_user: null
+  mailer_password: null
+  secret: b8cea2645a21cb34fd3498306fc649a701017797
